@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>作业提交情况核对</title>
+
+<style type="text/css">
+body {
+	background-image: url(back.jpg);
+	font-size: 30px;
+}
+</style>
+
+<script type="text/javascript">  
+var time_now_server,time_now_client,time_end,time_server_client,timerID;  
+   
+time_end=new Date("2017/12/24 20:00:0");//结束的时间  
+time_end=time_end.getTime();  
+   
+time_now_server=new Date();//开始的时间  
+time_now_server=time_now_server.getTime();  
+   
+time_now_client=new Date();  
+time_now_client=time_now_client.getTime();  
+   
+time_server_client=time_now_server-time_now_client;  
+   
+setTimeout("show_time()",1000);  
+   
+function show_time()  
+{  
+ var timer = document.getElementById("timer");  
+ if(!timer){  
+ return ;  
+ }  
+ timer.innerHTML =time_server_client;  
+   
+ var time_now,time_distance,str_time;  
+ var int_day,int_hour,int_minute,int_second;  
+ var time_now=new Date();  
+ time_now=time_now.getTime()+time_server_client;  
+ time_distance=time_end-time_now;  
+ if(time_distance>0)  
+ {  
+  int_day=Math.floor(time_distance/86400000)  
+  time_distance-=int_day*86400000;  
+  int_hour=Math.floor(time_distance/3600000)  
+  time_distance-=int_hour*3600000;  
+  int_minute=Math.floor(time_distance/60000)  
+  time_distance-=int_minute*60000;  
+  int_second=Math.floor(time_distance/1000)  
+   
+  if(int_hour<10)  
+   int_hour="0"+int_hour;  
+  if(int_minute<10)  
+   int_minute="0"+int_minute;  
+  if(int_second<10)  
+   int_second="0"+int_second;  
+  str_time="距离你的deadline还有:"+int_day+"天"+int_hour+"小时"+int_minute+"分钟"+int_second+"秒";  
+  timer.innerHTML=str_time;  
+  setTimeout("show_time()",1000);  
+ }  
+ else  
+ {  
+  timer.innerHTML =timer.innerHTML;  
+  clearTimeout(timerID)  
+ }  
+}  
+</script>  
+
+</head>
+
+<body>
+<div>
+  <div align="center"><font color="#000000" size="+3" face="华文行楷">请点击下面的链接进入相应的页面，如果已提交请检查提交方式是否正确，未提交的请尽快提交。 </font>
+    <p align="right">联系方式(QQ)：836226042</p>
+  </div>
+</div>
+<div><a href="wu.html">吴蕾老师班级请点击</a></div>
+<div><a href="wang.html">王文兵老师班级请点击</a></div>
+<hr size="5px" color="#00CC66"/>
+
+<div id="timer" ></div> 
+</body>
+</html>
